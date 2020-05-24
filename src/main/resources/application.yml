@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+
+  jpa:
+    database: mysql
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+mybatis:
+  type-aliases-package: com.example.supermarket.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+jy:
+  base: http://115.28.184.241/
+#  appId: OMFGirLYT0
+  appId: hxL0HaWICA
+  storeId: 6090
+  customid: MDA2MDQ5NDcO0O0O
+  key: ccbde23d6f0f8cae5326c8b8fd6544f2
+#  desKey: a31f4e78161be73177185f16
+  desKey: 7a0afa8bfaa73f0f064d46e1
+  storename: SJLH_03

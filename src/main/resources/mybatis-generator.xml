@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- home -->
+    <!--    <classPathEntry location="C:\maven_repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>-->
+
+    <!-- company -->
+    <classPathEntry location="D:\mavenRepo\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+
+    <context id="context1">
+        <!-- 去掉自动生成的注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/supermarket" driverClass="com.mysql.jdbc.Driver"
+                        password="root" userId="root"/>
+
+        <!-- bean-->
+        <javaModelGenerator targetPackage="com.example.supermarket.entity" targetProject="src\main\java"/>
+
+        <!-- xml -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources"/>
+
+        <!-- dao -->
+        <javaClientGenerator targetPackage="com.example.supermarket.dao" targetProject="src\main\java"
+                             type="XMLMAPPER"/>
+
+        <!--        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--        </table>-->
+        <!--        <table tableName="supermarket" domainObjectName="supermarket" enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false">-->
+        <!--        </table>-->
+        <!--                <table tableName="paper" domainObjectName="Paper" enableCountByExample="false"-->
+        <!--                       enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--                       selectByExampleQueryId="false">-->
+        <!--                </table>-->
+        <!--        <table tableName="publish" domainObjectName="Publish" enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false">-->
+        <!--        </table>-->
+                <table tableName="reply" domainObjectName="Reply" enableCountByExample="false"
+                       enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+                       selectByExampleQueryId="false">
+                </table>
+        <!--        <table tableName="class" domainObjectName="Class" enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false">-->
+        <!--        </table>-->
+        <!--        <table tableName="uid_cid" domainObjectName="UidCid" enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false">-->
+        <!--        </table>-->
+    </context>
+</generatorConfiguration>

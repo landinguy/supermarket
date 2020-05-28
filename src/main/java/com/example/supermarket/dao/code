@@ -1,0 +1,104 @@
+package com.example.supermarket.dao;
+
+import com.example.supermarket.controller.model.GoodsReq;
+import com.example.supermarket.entity.Goods;
+
+import java.util.List;
+
+public interface GoodsMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Goods record);
+
+    int insertSelective(Goods record);
+
+    Goods selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Goods record);
+
+    int updateByPrimaryKey(Goods record);
+
+    List<Goods> select(GoodsReq req);
+
+    Integer count(GoodsReq req);
+}
+
+
+package com.example.supermarket.dao;
+
+import com.example.supermarket.entity.GoodsType;
+
+import java.util.List;
+
+public interface GoodsTypeMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(GoodsType record);
+
+    int insertSelective(GoodsType record);
+
+    GoodsType selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(GoodsType record);
+
+    int updateByPrimaryKey(GoodsType record);
+
+    List<GoodsType> select();
+}
+
+
+package com.example.supermarket.dao;
+
+import com.example.supermarket.controller.model.OrderReq;
+import com.example.supermarket.entity.OrderRecord;
+
+import java.util.List;
+
+public interface OrderRecordMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(OrderRecord record);
+
+    int insertSelective(OrderRecord record);
+
+    OrderRecord selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(OrderRecord record);
+
+    int updateByPrimaryKey(OrderRecord record);
+
+    List<OrderRecord> select(OrderReq req);
+
+    Integer count(OrderReq req);
+
+}
+
+
+package com.example.supermarket.dao;
+
+import com.example.supermarket.controller.model.UserReq;
+import com.example.supermarket.entity.User;
+
+import java.util.List;
+
+public interface UserMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
+
+    User selectByUsernameAndPassword(String username, String password);
+
+    List<User> select(UserReq req);
+
+    Integer count(UserReq req);
+
+    Integer isExist(String username);
+}

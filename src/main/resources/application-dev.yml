@@ -20,7 +20,12 @@ server:
 
 log:
   level: INFO
-  path: C:/logs/supermarket
+  #  path: C:/logs/supermarket
+  path: D:/logs/supermarket
 
 cors:
   allowedOrigins: 'http://127.0.0.1:8088'
+
+upload:
+  path: D:/upload/images/
+  url: http://127.0.0.1:8001/

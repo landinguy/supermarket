@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.supermarket.dao.OrderRecordMapper">
+    <resultMap id="BaseResultMap" type="com.example.supermarket.entity.OrderRecord">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="number" jdbcType="VARCHAR" property="number"/>
+        <result column="create_ts" jdbcType="CHAR" property="createTs"/>
+        <result column="pay_ts" jdbcType="CHAR" property="payTs"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="goods_id" jdbcType="VARCHAR" property="goodsId"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="price" jdbcType="REAL" property="price"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, number, create_ts, pay_ts, status, goods_id, user_id, price, address
+  </sql>
+    <select id="count" resultType="Integer">
+        select count(*) from order_record
+        <where>
+            <if test="userId!=null">user_id=#{userId}</if>
+        </where>
+    </select>
+    <select id="select" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_record
+        <where>
+            <if test="userId!=null">user_id=#{userId}</if>
+        </where>
+        <if test="pageNo != null and pageSize != null">
+            limit ${(pageNo-1)*pageSize},#{pageSize}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_record
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.supermarket.entity.OrderRecord">
+    insert into order_record (id, number, create_ts, 
+      pay_ts, status, goods_id, 
+      user_id, price, address
+      )
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{createTs,jdbcType=CHAR}, 
+      #{payTs,jdbcType=CHAR}, #{status,jdbcType=TINYINT}, #{goodsId,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{price,jdbcType=REAL}, #{address,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.example.supermarket.entity.OrderRecord">
+        insert into order_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="createTs != null">
+                create_ts,
+            </if>
+            <if test="payTs != null">
+                pay_ts,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="goodsId != null">
+                goods_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null">
+                #{createTs,jdbcType=CHAR},
+            </if>
+            <if test="payTs != null">
+                #{payTs,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="goodsId != null">
+                #{goodsId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=REAL},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.supermarket.entity.OrderRecord">
+        update order_record
+        <set>
+            <if test="number != null">
+                number = #{number,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null">
+                create_ts = #{createTs,jdbcType=CHAR},
+            </if>
+            <if test="payTs != null">
+                pay_ts = #{payTs,jdbcType=CHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="goodsId != null">
+                goods_id = #{goodsId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=REAL},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.supermarket.entity.OrderRecord">
+    update order_record
+    set number = #{number,jdbcType=VARCHAR},
+      create_ts = #{createTs,jdbcType=CHAR},
+      pay_ts = #{payTs,jdbcType=CHAR},
+      status = #{status,jdbcType=TINYINT},
+      goods_id = #{goodsId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      price = #{price,jdbcType=REAL},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

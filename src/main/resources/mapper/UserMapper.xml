@@ -4,15 +4,15 @@
     <resultMap id="BaseResultMap" type="com.example.supermarket.entity.User">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="role" jdbcType="VARCHAR" property="role"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="account_name" jdbcType="VARCHAR" property="accountName"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, password, role, username,account_name
+    id, password, phone, role, username
   </sql>
     <select id="isExist" resultType="int">
-         select count(*) from user where account_name=#{accountName}
+         select count(*) from user where username=#{username}
     </select>
     <select id="count" resultType="Integer">
         select count(*) from user
@@ -35,7 +35,7 @@
     <select id="selectByUsernameAndPassword" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from user where account_name=#{username} and password=#{password}
+        from user where username=#{username} and password=#{password}
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -48,12 +48,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.example.supermarket.entity.User">
-    insert into user (id, password, role, username,account_name)
-    values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR},
-      #{username,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR})
+    insert into user (id, username, password,
+      phone, role
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}
+      )
   </insert>
-    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
-            parameterType="com.example.supermarket.entity.User">
+    <insert id="insertSelective" parameterType="com.example.supermarket.entity.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -62,14 +64,14 @@
             <if test="password != null">
                 password,
             </if>
+            <if test="phone != null">
+                phone,
+            </if>
             <if test="role != null">
                 role,
             </if>
             <if test="username != null">
                 username,
-            </if>
-            <if test="accountName != null">
-                account_name,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -79,14 +81,14 @@
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
             </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
             <if test="role != null">
                 #{role,jdbcType=VARCHAR},
             </if>
             <if test="username != null">
                 #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="accountName != null">
-                #{accountName,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -96,14 +98,14 @@
             <if test="password != null">
                 password = #{password,jdbcType=VARCHAR},
             </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
             <if test="role != null">
                 role = #{role,jdbcType=VARCHAR},
             </if>
             <if test="username != null">
                 username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="accountName != null">
-                account_name = #{accountName,jdbcType=VARCHAR},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
@@ -111,9 +113,9 @@
     <update id="updateByPrimaryKey" parameterType="com.example.supermarket.entity.User">
     update user
     set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       role = #{role,jdbcType=VARCHAR},
-      username = #{username,jdbcType=VARCHAR},
-      account_name = #{accountName,jdbcType=VARCHAR}
+      username = #{username,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

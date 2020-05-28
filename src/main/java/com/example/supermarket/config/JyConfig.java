@@ -15,4 +15,7 @@ public class JyConfig {
     private String key;
     private String desKey;
     private String storename;
+    private String dailyBill;
+    private String addBill;
+    private String queryPay;
 }

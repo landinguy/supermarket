@@ -13,13 +13,16 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class OrderRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String username;
-    @Builder.Default
-    private String password = "666666";
-    private String phone;
-    private String role;
+    private String number;
+    private String createTs;
+    private Integer status;// 1，待支付 2. 已支付 3. 已完成 4. 已失效
+    private String goodsId;
+    private Integer userId;
+    private Float price;
+    private String payTs;
+    private String address;
 }

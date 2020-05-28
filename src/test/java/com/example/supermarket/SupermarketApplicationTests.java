@@ -2,9 +2,7 @@ package com.example.supermarket;
 
 import com.alibaba.fastjson.JSON;
 import com.example.supermarket.client.JyClient;
-import com.example.supermarket.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -13,13 +13,9 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class GoodsType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String username;
-    @Builder.Default
-    private String password = "666666";
-    private String phone;
-    private String role;
+    private String name;
 }

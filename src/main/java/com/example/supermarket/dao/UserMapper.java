@@ -1,3 +1,4 @@
+
 package com.example.supermarket.dao;
 
 import com.example.supermarket.controller.model.UserReq;
@@ -24,5 +25,5 @@ public interface UserMapper {
 
     Integer count(UserReq req);
 
-    Integer isExist(String accountName);
+    Integer isExist(String username);
 }

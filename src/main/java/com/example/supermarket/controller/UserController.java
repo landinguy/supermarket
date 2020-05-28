@@ -97,30 +97,4 @@ public class UserController {
         }
     }
 
-//    @PostMapping("upload")
-//    public Result upload(MultipartFile files, String type) {
-//        try {
-//            log.info("upload file,filename#{},type#{}", files.getOriginalFilename(), type);
-//            String filename = UUID.randomUUID().toString().replaceAll("-", "") + ".txt";
-//            FileUtils.copyInputStreamToFile(files.getInputStream(), new File("D:\\vms\\upload\\" + filename));
-//            ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-//            service.schedule(() -> {
-//                try (Stream<String> lines = Files.lines(Paths.get("D:\\vms\\upload\\" + filename), StandardCharsets.UTF_8)) {
-//                    if (type.equals("vehicle")) {
-//                        lines.forEach(item -> vehicleService.add(JSONObject.parseObject(item, Vehicle.class)));
-//                    } else if (type.equals("peccancy")) {
-//                        lines.forEach(item -> recordService.add(JSONObject.parseObject(item, Record.class)));
-//                    }
-//                } catch (Exception e) {
-//                    log.info("do file#{} error#{}", files.getOriginalFilename(), e);
-//                }
-//            }, 0, TimeUnit.SECONDS);
-//            return Result.builder().code(0).msg("文件上传成功").build();
-//        } catch (Exception e) {
-//            log.error("upload error#{}", e);
-//            return Result.builder().code(-1).msg("文件上传失败").build();
-//        }
-//    }
-
-
 }

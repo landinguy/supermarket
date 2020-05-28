@@ -45,7 +45,7 @@ public class UserService {
             if (userMapper.isExist(username) > 0) {
                 builder.code(-1).msg("账号名已存在！");
             } else {
-                user.setAccountName(username);
+                user.setRole("NORMAL");
                 userMapper.insertSelective(user);
             }
         }

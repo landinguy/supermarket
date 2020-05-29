@@ -1,0 +1,16 @@
+ @GetMapping("delete/{id}")
+    public Result addType(@PathVariable Integer id) {
+        log.info("删除商品,id#{}", id);
+        Result.ResultBuilder builder = Result.builder();
+        try {
+            goodsService.delete(id);
+        } catch (Exception e) {
+            builder.code(-1).msg("删除商品失败");
+            log.error("删除商品失败", e);
+        }
+        return builder.build();
+    }
+
+     public void delete(Integer id) {
+            goodsMapper.deleteByPrimaryKey(id);
+        }
